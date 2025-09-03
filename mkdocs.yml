@@ -1,0 +1,65 @@
+site_name: mkb-stack
+site_description: 'A template for small businesses to set up their internal IT infrastructure.'
+site_author: 'mkb-stack contributors'
+site_url: https://gerwin.github.io/mkb-stack/ # Replace with your GitHub Pages URL
+
+repo_name: 'gerwin/mkb-stack'
+repo_url: 'https://github.com/gerwin/mkb-stack'
+edit_uri: 'edit/main/docs/'
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+
+plugins:
+  - search
+
+nav:
+  - 'Home': 'index.md'
+  - 'Getting Started':
+    - 'Installation': 'getting-started/01-installation.md'
+    - 'Initial Configuration': 'getting-started/02-initial-configuration.md'
+    - 'Updating': 'getting-started/03-updating.md'
+  - 'Manual':
+    - 'Services':
+      - 'Samba': 'manual/services/samba.md'
+      - 'Authentik': 'manual/services/authentik.md'
+      - 'Forgejo': 'manual/services/forgejo.md'
+      - 'Woodpecker': 'manual/services/woodpecker.md'
+      - 'Traefik': 'manual/services/traefik.md'
+    - 'Security':
+      - 'Firewall and Fail2ban': 'manual/security/firewall-and-fail2ban.md'
+      - 'WireGuard VPN': 'manual/security/wireguard-vpn.md'
+  - 'About':
+    - 'Architecture': 'about/architecture.md'
+    - 'Contributing': 'about/contributing.md'
+    - 'License': 'about/license.md'
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - md_in_html
