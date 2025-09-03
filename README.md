@@ -1,5 +1,8 @@
 # mkb-stack
 
+> [!WARNING]
+> This project is in its very early stages. Nothing is guaranteed to work, and the documentation is still under construction. Assistance is greatly appreciated!
+
 ## For Who is This Project
 
 This project is a template for small businesses to set up their internal IT infrastructure without dependence on multinational corporations. Everything is based on open source with a preference for the most permissive licenses for commercial use.
@@ -53,3 +56,7 @@ make apply
 ```
 
 **Note:** While the goal is to provide a complete solution, the Ansible roles and playbooks are not yet fully implemented. You may need to provide your own for a complete setup.
+
+## Contributing
+
+This project is in its early stages, and we welcome all contributions. Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
