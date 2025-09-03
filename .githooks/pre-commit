@@ -1,0 +1,19 @@
+#!/bin/sh
+# .githooks/pre-commit
+
+# This hook runs the local linting script before committing.
+# If the linting script finds issues, the commit will be aborted.
+
+# Ensure we are in the root of the repository
+cd "$(git rev-parse --show-toplevel)"
+
+# Run the linting script
+sh scripts/lint.sh
+
+# Check the exit status of the linting script
+if [ $? -ne 0 ]; then
+  echo "\nLinting failed. Please fix the issues before committing."
+  exit 1
+fi
+
+exit 0

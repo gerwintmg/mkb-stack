@@ -1,0 +1,38 @@
+name: Linting
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+
+  ansible-lint:
+    name: Ansible Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint-action@main
+        with:
+          path: "ansible/"
+
+  markdownlint:
+    name: MarkdownLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run markdownlint-cli
+        uses: nosborn/github-action-markdown-cli@v3.2.0
+        with:
+          files: "./*.md docs/**/*.md"
