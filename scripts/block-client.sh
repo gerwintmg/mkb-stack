@@ -9,6 +9,9 @@ WG_CONF="/etc/wireguard/wg0.conf"
 sed -i "/# $CLIENT_NAME/,/AllowedIPs/ s/^/#BLOCKED#/" "$WG_CONF"
 
 # Herlaad configuratie
-wg syncconf wg0 <(wg-quick strip wg0)
+WG_STRIP_CONF=$(mktemp)
+wg-quick strip wg0 > "$WG_STRIP_CONF"
+wg syncconf wg0 "$WG_STRIP_CONF"
+rm "$WG_STRIP_CONF"
 
-echo "⛔ Client $CLIENT_NAME geblokkeerd."
+printf "⛔ Client %s geblokkeerd.\n" "$CLIENT_NAME"

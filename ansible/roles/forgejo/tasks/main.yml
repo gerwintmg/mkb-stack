@@ -1,4 +1,4 @@
 ---
 - name: Forgejo placeholder
-  debug:
+  ansible.builtin.debug:
     msg: "This is a placeholder for the forgejo role."

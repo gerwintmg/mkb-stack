@@ -1,4 +1,4 @@
 ---
 - name: Authentik placeholder
-  debug:
+  ansible.builtin.debug:
     msg: "This is a placeholder for the authentik role."

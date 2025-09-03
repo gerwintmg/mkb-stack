@@ -1,7 +1,7 @@
 #!/bin/sh
 # scripts/add-wireguard-client.sh – Voeg een WireGuard client toe en genereer config + QR-code
 set -eu
-
+# shellcheck source=scripts/settings.env
 . "$(dirname "$0")/settings.env"
 
 WG_CONF="/etc/wireguard/wg0.conf"
@@ -40,7 +40,10 @@ AllowedIPs = $CLIENT_IP/32
 EOF
 
 # Herlaad WireGuard configuratie
-wg syncconf wg0 <(wg-quick strip wg0)
+WG_STRIP_CONF=$(mktemp)
+wg-quick strip wg0 > "$WG_STRIP_CONF"
+wg syncconf wg0 "$WG_STRIP_CONF"
+rm "$WG_STRIP_CONF"
 
 # -----------------------------------------------------------------------------
 # Maak client config
@@ -71,10 +74,10 @@ chmod 600 "$CLIENT_CONF"
 if command -v qrencode >/dev/null 2>&1; then
   qrencode -t ansiutf8 < "$CLIENT_CONF"
   qrencode -o "$CLIENT_CONF.png" < "$CLIENT_CONF"
-  echo "QR-code gegenereerd: $CLIENT_CONF.png"
+  printf "QR-code gegenereerd: %s\n" "$CLIENT_CONF.png"
 else
-  echo "⚠️  qrencode niet geïnstalleerd. Installeer met: apt install qrencode"
+  printf "⚠️  qrencode niet geïnstalleerd. Installeer met: apt install qrencode\n"
 fi
 
-echo "✅ Clientconfig gemaakt: $CLIENT_CONF"
-echo "Importeer dit bestand in de WireGuard client of scan de QR-code."
+printf "✅ Clientconfig gemaakt: %s\n" "$CLIENT_CONF"
+printf "Importeer dit bestand in de WireGuard client of scan de QR-code.\n"

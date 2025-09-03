@@ -1,7 +1,7 @@
 #!/bin/sh
 # scripts/host-setup.sh – draait op de Debian host (met POSIX sh)
 set -eu
-
+# shellcheck source=scripts/settings.env
 . "$(dirname "$0")/settings.env"
 
 # -----------------------------------------------------------------------------
@@ -36,7 +36,7 @@ if [ ! -f /etc/wireguard/server_private.key ]; then
 fi
 
 SERVER_PRIVKEY=$(cat /etc/wireguard/server_private.key)
-SERVER_PUBKEY=$(cat /etc/wireguard/server_public.key)
+SERVER_PUBKEY=$(cat /etc/wireguard/server_private.key) # shellcheck disable=SC2034
 
 cat > "$WG_CONF" <<EOF
 [Interface]
@@ -79,10 +79,10 @@ iptables -A INPUT -i lo -j ACCEPT
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 # WireGuard poort toestaan (UDP)
-iptables -A INPUT -p udp --dport ${WG_PORT:-51820} -j ACCEPT
+iptables -A INPUT -p udp --dport "${WG_PORT:-51820}" -j ACCEPT
 
 # SSH alleen via WireGuard subnet toestaan
-iptables -A INPUT -p tcp -s ${WG_SUBNET:-10.8.0.0/24} --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp -s "${WG_SUBNET:-10.8.0.0/24}" --dport 22 -j ACCEPT
 
 # Optioneel: landenfilter (voorbeeld: alleen NL en BE)
 # iptables -m geoip --src-cc NL,BE -j ACCEPT
@@ -126,4 +126,4 @@ if [ ! -f ~/.ssh/id_rsa ]; then
   ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
 fi
 
-echo "Host setup voltooid. WireGuard draait op UDP poort ${WG_PORT:-51820}."
+printf "Host setup voltooid. WireGuard draait op UDP poort %s.\n" 51820

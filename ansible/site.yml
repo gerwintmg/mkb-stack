@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: Apply mkb-stack roles
+  hosts: all
   become: true
   roles:
     - samba

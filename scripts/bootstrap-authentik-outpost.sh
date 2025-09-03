@@ -1,7 +1,7 @@
 #!/bin/sh
 # scripts/bootstrap-authentik-outpost.sh – Authentik Outpost + Traefik integratie
 set -eu
-
+# shellcheck source=scripts/settings.env
 . "$(dirname "$0")/settings.env"
 
 OUTPOST_NAME="authentik-outpost"

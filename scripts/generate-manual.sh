@@ -1,7 +1,8 @@
 #!/bin/sh
 # scripts/generate-manual.sh – maakt join handleiding
 set -eu
-. \$(dirname "\$0")/settings.env
+# shellcheck source=scripts/settings.env
+. "$(dirname "$0")/settings.env"
 
 cat > docs/JOIN_MANUAL.md <<'EOF'
 # Join Manual
