@@ -40,6 +40,13 @@ This file outlines the major tasks required to complete the mkb-stack project.
         - [ ] Implement the Traefik role to configure it as a reverse proxy.
         - [ ] Add tasks for creating routes to the other services.
         - [ ] Configure Traefik to use Let's Encrypt for SSL certificates.
+    - [ ] **Mail Server**
+        - [ ] **Default Relay Server:** Implement a simple mail relay container (e.g., using Postfix) that sends all mail through an external provider. This should be the default, easy-to-configure option.
+        - [ ] **Optional Full Mail Server:**
+            - [ ] Research and select a full-featured mail server stack (e.g., Postfix, Dovecot, Rspamd).
+            - [ ] Implement the mail server as an optional, separate set of containers.
+            - [ ] Add the necessary firewall rules and Fail2ban configurations, which should only be applied if the user enables the full mail server.
+            - [ ] Document the complex DNS configuration (MX, SPF, DKIM, DMARC) required for a self-hosted mail server.
 
 - [ ] **Configuration Generation**
     - [ ] Create a script to generate the `ansible/inventories/hosts.yml` and `ansible/inventories/group_vars/all.yml` files from a simpler configuration file.
