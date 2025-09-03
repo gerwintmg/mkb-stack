@@ -59,17 +59,25 @@ All scripts should be POSIX compatible unless absolutely not possible. If a scri
     # For shell scripts
     sudo apt-get install shellcheck
 
-    # For Ansible
-    pip install ansible-lint
+    # For Ansible (using a Python virtual environment)
+    sudo apt-get install -y python3-venv # Install venv module
+    python3 -m venv .venv-mkb-stack # Create a virtual environment named .venv-mkb-stack
+    source .venv-mkb-stack/bin/activate # Activate the virtual environment
+    pip install ansible-lint # Install ansible-lint in the virtual environment
 
     # For Markdown
-    npm install -g markdownlint-cli
+    sudo apt-get install ruby # Install Ruby
+    sudo gem install mdl      # Install mdl via RubyGems
     ```
 
     Then, you can run the local linting script:
     ```bash
     sh scripts/lint.sh
     ```
+
+    > [!NOTE]
+    > If you close your terminal or start a new session, you will need to reactivate the virtual environment using `source .venv-mkb-stack/bin/activate` before running `sh scripts/lint.sh` or any Ansible commands.
+    > To exit the virtual environment, simply run: `deactivate`
 
 4.  Test your changes by running the bootstrap and apply commands:
     ```bash

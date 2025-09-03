@@ -27,12 +27,14 @@ jobs:
         with:
           path: "ansible/"
 
-  markdownlint:
-    name: MarkdownLint
+  mdl:
+    name: Markdown Lint (mdl)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run markdownlint-cli
-        uses: nosborn/github-action-markdown-cli@v3.2.0
-        with:
-          files: "./*.md docs/**/*.md"
+      - name: Install Ruby
+        run: sudo apt-get update && sudo apt-get install -y ruby
+      - name: Install mdl
+        run: sudo gem install mdl
+      - name: Run mdl
+        run: mdl --style all --warnings --config .mdlrc "**/*.md"

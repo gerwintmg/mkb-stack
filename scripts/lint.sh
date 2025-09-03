@@ -9,7 +9,8 @@ LINTER_FOUND=0
 # --- ShellCheck ---
 echo "\n--- Running ShellCheck ---"
 if command -v shellcheck >/dev/null 2>&1; then
-  find . -name "*.sh" -print0 | xargs -0 shellcheck
+  # Exclude the virtual environment directory
+  find . -name "*.sh" -not -path "./.venv-mkb-stack/*" -print0 | xargs -0 shellcheck
   if [ $? -ne 0 ]; then
     echo "ShellCheck found issues."
   else
@@ -22,6 +23,12 @@ fi
 
 # --- Ansible Lint ---
 echo "\n--- Running Ansible Lint ---"
+# Check if the named virtual environment exists and activate it
+if [ -f ".venv-mkb-stack/bin/activate" ]; then
+  . .venv-mkb-stack/bin/activate
+  echo "Activated Python virtual environment (.venv-mkb-stack)."
+fi
+
 if command -v ansible-lint >/dev/null 2>&1; then
   ansible-lint ansible/
   if [ $? -ne 0 ]; then
@@ -31,21 +38,21 @@ if command -v ansible-lint >/dev/null 2>&1; then
   fi
   LINTER_FOUND=1
 else
-  echo "Ansible Lint not found. Install with: pip install ansible-lint for full validation."
+  echo "Ansible Lint not found. Install with: pip install ansible-lint (preferably in a virtual environment) for full validation."
 fi
 
-# --- MarkdownLint ---
-echo "\n--- Running MarkdownLint ---"
-if command -v markdownlint >/dev/null 2>&1; then
-  markdownlint "**/*.md"
+# --- Markdown Lint (mdl) ---
+echo "\n--- Running Markdown Lint (mdl) ---"
+if command -v mdl >/dev/null 2>&1; then
+  mdl --style all --warnings --config .mdlrc "**/*.md"
   if [ $? -ne 0 ]; then
-    echo "MarkdownLint found issues."
+    echo "mdl found issues."
   else
-    echo "MarkdownLint passed."
+    echo "mdl passed."
   fi
   LINTER_FOUND=1
 else
-  echo "MarkdownLint not found. Install with: npm install -g markdownlint-cli for full validation."
+  echo "mdl not found. Install with: sudo apt-get install ruby && sudo gem install mdl for full validation."
 fi
 
 # --- Final Summary ---

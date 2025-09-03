@@ -12,7 +12,6 @@ WSL2 allows you to run a full Linux environment directly within Windows, providi
 2.  **Launch your WSL Distribution:** Open your installed Linux distribution from the Start Menu.
 
 3.  **Follow the Main `CONTRIBUTING.md` Guide:** Once inside your WSL environment, you can follow the standard development setup instructions provided in the main [`CONTRIBUTING.md`](./CONTRIBUTING.md) file, as you are now effectively working in a Linux environment.
-
 ## Option 2: Using Git Bash (Advanced/Limited Support)
 
 While possible, using Git Bash directly for development is generally not recommended due to potential compatibility issues with some Linux-specific tools and pathing. If you choose this option, you will need to manually install the linters and ensure they are accessible in your Git Bash PATH.
@@ -21,8 +20,8 @@ While possible, using Git Bash directly for development is generally not recomme
 
 *   **Install Linters (Manual):**
     *   **ShellCheck:** Download the Windows binary or use a package manager like Chocolatey (`choco install shellcheck`). Ensure it's in your PATH.
-    *   **Ansible Lint:** Install Python for Windows and then `pip install ansible-lint` in your Git Bash terminal.
-    *   **MarkdownLint CLI:** Install Node.js for Windows and then `npm install -g markdownlint-cli` in your Git Bash terminal.
+    *   **Ansible Lint:** Install Python for Windows and then create and activate a virtual environment before running `pip install ansible-lint` in your Git Bash terminal.
+    *   **Markdown Lint (mdl):** Install Ruby for Windows and then `gem install mdl` in your Git Bash terminal.
 
 *   **Run Local Linters:**
     ```bash
