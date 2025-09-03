@@ -57,6 +57,46 @@ make apply
 
 **Note:** While the goal is to provide a complete solution, the Ansible roles and playbooks are not yet fully implemented. You may need to provide your own for a complete setup.
 
+## Development
+
+### Editing Documentation
+
+This project uses [MkDocs](https://www.mkdocs.org/) with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme to generate the documentation website.
+
+To preview the documentation locally, run:
+
+```bash
+mkdocs serve
+```
+
+#### VS Code Extensions
+
+If you are using Visual Studio Code, the following extensions can be helpful:
+
+*   **[YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml):** For editing the `mkdocs.yml` file.
+*   **[Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one):** For Markdown editing and preview.
+
+### Testing in an Incus VM
+
+To test the entire stack in a clean environment, you can use a nested Incus setup. This involves creating a virtual machine and running the mkb-stack inside it.
+
+1.  **Create a VM:**
+    ```bash
+    incus launch images:debian/12 test-vm --vm
+    ```
+
+2.  **Enable nesting:**
+    ```bash
+    incus config set test-vm security.nesting=true
+    ```
+
+3.  **Access the VM:**
+    ```bash
+    incus shell test-vm
+    ```
+
+4.  **Inside the VM, follow the instructions in the "Getting Started" section of this README.**
+
 ## Contributing
 
 This project is in its early stages, and we welcome all contributions. Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.

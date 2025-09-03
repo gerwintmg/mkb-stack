@@ -37,6 +37,7 @@ nav:
     - 'Installation': 'getting-started/01-installation.md'
     - 'Initial Configuration': 'getting-started/02-initial-configuration.md'
     - 'Updating': 'getting-started/03-updating.md'
+    - 'Joining Windows to the Domain': 'getting-started/04-joining-windows-to-the-domain.md'
   - 'Manual':
     - 'Services':
       - 'Samba': 'manual/services/samba.md'
@@ -63,3 +64,8 @@ markdown_extensions:
   - pymdownx.mark
   - attr_list
   - md_in_html
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format

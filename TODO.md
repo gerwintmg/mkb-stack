@@ -59,3 +59,16 @@ This file outlines the major tasks required to complete the mkb-stack project.
 - [ ] **Security**
     - [ ] Perform a security audit of the entire stack.
     - [ ] Implement security hardening measures where necessary.
+
+## Phase 4: Advanced Scenarios
+
+- [ ] **Onboarding Remote Employees (Pre-Logon VPN)**
+    - [ ] **Design:**
+        - [ ] Finalize the choice of pre-logon VPN solution (likely OpenVPN).
+        - [ ] Design the service to be **optional and disabled by default**. This will likely involve a variable in the main configuration file.
+    - [ ] **Implementation:**
+        - [ ] Add a new container for the OpenVPN server to the stack, which is only created if the service is enabled.
+        - [ ] Create a new Ansible role to automate the installation and configuration of the OpenVPN server.
+    - [ ] **Documentation:**
+        - [ ] Create a new documentation page explaining how to enable and use the pre-logon VPN for onboarding remote employees.
+        - [ ] Document the process for generating and distributing client configuration files.
