@@ -1,12 +1,12 @@
 bootstrap:
-	bash scripts/host-setup.sh
-	bash scripts/bootstrap.sh
+	sh scripts/host-setup.sh
+	sh scripts/bootstrap.sh
 
 ping:
-	bash scripts/check-ansible.sh
+	sh scripts/check-ansible.sh
 
 apply:
 	ansible-playbook -i ansible/inventories/hosts.yml ansible/site.yml
 
 manual:
-	bash scripts/generate-manual.sh
+	sh scripts/generate-manual.sh
