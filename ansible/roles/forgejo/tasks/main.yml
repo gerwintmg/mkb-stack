@@ -1,0 +1,4 @@
+---
+- name: Forgejo placeholder
+  debug:
+    msg: "This is a placeholder for the forgejo role."

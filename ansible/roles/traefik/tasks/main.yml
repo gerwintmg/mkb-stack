@@ -1,0 +1,4 @@
+---
+- name: Traefik placeholder
+  debug:
+    msg: "This is a placeholder for the traefik role."

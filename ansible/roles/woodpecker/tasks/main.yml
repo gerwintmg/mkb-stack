@@ -1,0 +1,4 @@
+---
+- name: Woodpecker placeholder
+  debug:
+    msg: "This is a placeholder for the woodpecker role."

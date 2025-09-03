@@ -1,16 +1,24 @@
 # mkb-stack
 
-This project provides a set of scripts and configurations to set up a server with various services running in Incus containers. The services are managed by Ansible.
+## For Who is This Project
+
+This project is a template for small businesses to set up their internal IT infrastructure without dependence on multinational corporations. Everything is based on open source with a preference for the most permissive licenses for commercial use.
+
+## Philosophy
+
+The base is intended to be run on a single server with applications separated in containers so that when a security incident happens, the impact can be limited. The configuration needs to be able to work with Microsoft, Linux, and Apple-based products to facilitate easy adoption to a fully independent IT infrastructure.
+
+This project is intended to be a "click and run" solution for the most basic setup. Example configurations are included, and the goal is to generate all required configurations automatically.
 
 ## Services
 
 The following services are set up:
 
-*   **Samba**: File sharing
-*   **Authentik**: Identity provider
-*   **Forgejo**: Git service
-*   **Woodpecker**: CI/CD
-*   **Traefik**: Reverse proxy
+*   **Samba**: File sharing (compatible with Windows, macOS, and Linux)
+*   **Authentik**: Identity provider for single sign-on (SSO)
+*   **Forgejo**: Self-hosted Git service
+*   **Woodpecker**: CI/CD for automating software workflows
+*   **Traefik**: Reverse proxy and load balancer
 
 ## Getting Started
 
@@ -44,4 +52,4 @@ To apply the Ansible configuration, run:
 make apply
 ```
 
-**Note:** The Ansible roles and playbooks are not included in this repository. You will need to provide your own.
+**Note:** While the goal is to provide a complete solution, the Ansible roles and playbooks are not yet fully implemented. You may need to provide your own for a complete setup.

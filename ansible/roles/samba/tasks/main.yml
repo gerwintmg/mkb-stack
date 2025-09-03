@@ -1,0 +1,4 @@
+---
+- name: Samba placeholder
+  debug:
+    msg: "This is a placeholder for the samba role."

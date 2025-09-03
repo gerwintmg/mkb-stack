@@ -2,6 +2,16 @@
 
 Thank you for your interest in contributing to mkb-stack!
 
+## Project Philosophy
+
+This project is a template for small businesses to set up their internal IT infrastructure without dependence on multinational corporations. We prioritize open-source solutions with permissive licenses for commercial use.
+
+The goal is to create a secure and stable base that can be run on a single server, with applications separated in containers to limit the impact of security incidents. The configuration should be compatible with Microsoft, Linux, and Apple-based products.
+
+## Scripting Guidelines
+
+All scripts should be POSIX compatible unless absolutely not possible. If a script is not POSIX compatible, it must be documented in the script's comments.
+
 ## Development Setup
 
 1.  **Prerequisites:**

@@ -1,0 +1,4 @@
+---
+- name: Authentik placeholder
+  debug:
+    msg: "This is a placeholder for the authentik role."
