@@ -37,4 +37,4 @@ jobs:
       - name: Install mdl
         run: sudo gem install mdl
       - name: Run mdl
-        run: mdl --style all --warnings --config .mdlrc "**/*.md"
+        run: mdl --style all --warnings --config .mdlrc -g -- ./docs/* *.md ./.github/* 
