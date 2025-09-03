@@ -1,0 +1,15 @@
+# Globale variabelen voor Ansible
+samba_realm: EXAMPLE.LAN
+samba_domain: EXAMPLE
+samba_admin_pass: "ChangeMe123!"
+
+forgejo_domain: git.example.com
+woodpecker_domain: ci.example.com
+authentik_domain: login.example.com
+traefik_domain: proxy.example.com
+
+mail_mode: relay   # opties: relay, full
+mail_relay_host: smtp.office365.com
+mail_relay_port: 587
+mail_relay_user: user@example.com
+mail_relay_pass: "ChangeMe!"
